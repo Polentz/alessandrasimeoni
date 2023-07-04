@@ -37,7 +37,7 @@ const hoverEffect = () => {
         el.addEventListener("mouseleave", () => {
             parent.classList.remove("underline");
         });
-        el.addEventListener("touchend", () => {
+        el.addEventListener("touchstart", () => {
             if (parent.classList.contains("underline")) {
                 parent.classList.remove("underline");
             }
