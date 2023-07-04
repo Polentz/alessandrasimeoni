@@ -88,7 +88,7 @@ section {
 .content-list.close svg {
     width: var(--svg-size);
     stroke: var(--color-txt);
-    stroke-width: 1px;
+    stroke-width: 1.5px;
     display: flex;
 }
 
@@ -195,5 +195,9 @@ footer {
         font-size: .75rem;
         flex-direction: column;
         gap: .5rem;
+    }
+
+    .content-list.close svg {
+        stroke-width: 3px;
     }
 }

@@ -37,6 +37,11 @@ const hoverEffect = () => {
         el.addEventListener("mouseleave", () => {
             parent.classList.remove("underline");
         });
+        el.addEventListener("touchend", () => {
+            if (parent.classList.contains("underline")) {
+                parent.classList.remove("underline");
+            }
+        })
     });
 };
 hoverEffect();
