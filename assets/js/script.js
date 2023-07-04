@@ -2,39 +2,26 @@ const documentHeight = () => {
     const doc = document.documentElement;
     doc.style.setProperty("--doc-height", `${window.innerHeight}px`);
 };
+
 window.addEventListener("resize", () => {
     documentHeight();
 });
-// window.addEventListener("resize", documentHeight)
-// documentHeight();
-
-// const canvas = document.getElementById("canvas");
-// const ctx = canvas.getContext("2d");
-// canvas.width = window.innerWidth;
-// canvas.height = window.innerHeight;
-
-// window.addEventListener("resize", () => {
-//     canvas.width = window.innerWidth;
-//     canvas.height = window.innerHeight;
-// });
 
 const openOnClick = () => {
     const header = document.querySelectorAll(".title");
     const about = document.getElementById("about");
     const main = document.querySelector(".main");
-    const close = document.querySelector(".close")
+    const close = document.querySelector(".close");
     header.forEach(element => {
         element.addEventListener("click", () => {
             about.style.display = "block";
             main.style.display = "none";
-            canvas.style.opacity = "0";
         });
     });
     close.addEventListener("click", () => {
         about.style.display = "none";
         main.style.display = "block";
-        canvas.style.opacity = "1";
-    })
+    });
 };
 openOnClick();
 
@@ -54,6 +41,22 @@ const hoverEffect = () => {
 };
 hoverEffect();
 
+const playaudio = () => {
+    const button = document.querySelector(".circle");
+    const content = document.querySelectorAll(".content")
+    button.addEventListener("mouseenter", () => {
+        content.forEach(c => {
+            c.classList.add("background")
+        });
+    });
+    button.addEventListener("mouseleave", () => {
+        content.forEach(c => {
+            c.classList.remove("background")
+        });
+    });
+};
+// playaudio();
+
 const scrollSection = document.querySelector(".scroll");
 const infiniteLoopScroll = () => {
     const maxScroll = scrollSection.scrollHeight - scrollSection.clientHeight;
@@ -67,16 +70,13 @@ const infiniteLoopScroll = () => {
             container.appendChild(newUl);
         };
     };
-
-    // SCROLL TO TOP SOLUTION (NO CLONE)
-    // if (currentScroll >= maxScroll) {
-    //     scrollSection.scrollTo(0, 0);
-    // };
 };
+
 scrollSection.addEventListener("scroll", () => {
     infiniteLoopScroll();
     openOnClick();
     hoverEffect();
+    playaudio();
 });
 
 

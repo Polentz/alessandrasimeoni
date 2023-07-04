@@ -4,6 +4,7 @@
     --color-bg: #fff;
     --color-acc: #ff4747;
     --font-size: calc(6vw + 3em);
+    --svg-size: calc(1vw + 1em);
     --margin: 0 4rem;
 }
 
@@ -20,20 +21,6 @@ body {
 
 a {
     color: var(--color-txt);
-}
-
-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: var(--doc-height);
-    mix-blend-mode: lighten;
-    background-color: #fffffff5;
-    pointer-events: none;
-    filter: blur(4px);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 71, 71, 0.3) 100%);
-    visibility: hidden;
 }
 
 section {
@@ -65,14 +52,21 @@ section {
     padding: var(--margin);
     background-color: var(--color-bg);
     mix-blend-mode: lighten;
+    transition: all 1.25s .25s ease;
 }
 
+.content.background {
+    background-color: transparent;
+}
 
 .layer {
     position: absolute;
     top: 0;
     left: 0;
     display: none;
+}
+
+.layer .content-list {
     word-break: break-all;
 }
 
@@ -80,7 +74,7 @@ section {
     position: relative;
     will-change: transform;
     transform: translateZ(0);
-    transition: transform 2s .25s ease-in-out;
+    transition: transform 6s .25s ease-in-out;
 }
 
 .content-list.effect:hover {
@@ -89,6 +83,13 @@ section {
 
 .content-list.close {
     cursor: pointer;
+}
+
+.content-list.close svg {
+    width: var(--svg-size);
+    stroke: var(--color-txt);
+    stroke-width: 1px;
+    display: flex;
 }
 
 .content-list::after {
@@ -147,10 +148,35 @@ footer {
     left: 0;
     background-color: var(--color-bg);
     font-size: 1rem;
-    line-height: 2;
-    text-align: end;
+    line-height: 1.2;
+    font-weight: bolder;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
     padding: var(--margin);
+    margin-bottom: 1rem;
     z-index: 9;
+}
+
+.circle {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    position: fixed;
+    top: -4rem;
+    right: -4rem;
+    /* transform: translate(-50%, -50%); */
+    border: solid 1px var(--color-txt);
+    cursor: pointer;
+    transition: all 1.25s ease;
+}
+
+.circle:hover {
+    top: 0;
+    right: 0;
+    border-radius: 0%;
+    background-color: var(--color-txt);
+    mix-blend-mode: lighten;
 }
 
 @media screen and (max-width: 600px) {
@@ -163,5 +189,11 @@ footer {
     .content-list a,
     .content-list p {
         padding: 1rem 0;
+    }
+
+    footer {
+        font-size: .75rem;
+        flex-direction: column;
+        gap: .5rem;
     }
 }
