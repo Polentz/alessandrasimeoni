@@ -72,7 +72,7 @@ const playaudio = () => {
             audio.pause();
     });
 };
-// Do not run yet
+// Do not run it yet
 
 const scrollSection = document.querySelector(".scroll");
 const infiniteLoopScroll = () => {

@@ -1,3 +1,5 @@
+/* Need prefix */
+
 :root {
     --doc-height: 100%;
     --color-txt: #0dabab;
@@ -201,6 +203,14 @@ footer {
 
     .content-list.effect:hover {
         transform: none;
+    }
+
+    .content-list.underline::before {
+        opacity: 0;
+    }
+
+    .content-list.underline::after {
+        content: "";
     }
 
     .content-list h1,
