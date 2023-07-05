@@ -179,10 +179,24 @@ footer {
     mix-blend-mode: lighten;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
     :root {
         --font-size: calc(4vw + 3em);
         --margin: 0 1rem;
+    }
+
+    .layer .content {
+        background-color: #0dabab60;
+        mix-blend-mode: unset;
+        height: var(--doc-height);
+    }
+
+    .layer .content-list::after {
+        background-color: var(--color-bg)
+    }
+
+    .layer .content-list p {
+        color: var(--color-bg);
     }
 
     .content-list.effect:hover {
@@ -199,9 +213,62 @@ footer {
         font-size: .75rem;
         flex-direction: column;
         gap: .5rem;
+        background-color: transparent;
+        color: var(--color-bg);
     }
 
     .content-list.close svg {
+        stroke: var(--color-bg);
+        stroke-width: 3px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    :root {
+        --font-size: calc(4vw + 3em);
+        --margin: 0 1rem;
+    }
+
+    .main {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 0 0;
+    }
+
+    .layer .content {
+        background-color: #0dabab60;
+        mix-blend-mode: unset;
+        height: var(--doc-height);
+    }
+
+    .layer .content-list::after {
+        background-color: var(--color-bg)
+    }
+
+    .layer .content-list p {
+        color: var(--color-bg);
+    }
+
+    .content-list.effect:hover {
+        transform: none;
+    }
+
+    .content-list h1,
+    .content-list a,
+    .content-list p {
+        padding: 1rem 0;
+    }
+
+    footer {
+        font-size: .75rem;
+        flex-direction: column;
+        gap: .5rem;
+        background-color: transparent;
+        color: var(--color-bg);
+    }
+
+    .content-list.close svg {
+        stroke: var(--color-bg);
         stroke-width: 3px;
     }
 }

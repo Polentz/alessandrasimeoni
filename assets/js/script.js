@@ -3,6 +3,10 @@ const documentHeight = () => {
     doc.style.setProperty("--doc-height", `${window.innerHeight}px`);
 };
 
+window.addEventListener("load", () => {
+    documentHeight();
+});
+
 window.addEventListener("resize", () => {
     documentHeight();
 });
@@ -46,6 +50,7 @@ const hoverEffect = () => {
 };
 hoverEffect();
 
+// Waiting for the audio element
 const playaudio = () => {
     const button = document.querySelector(".circle");
     const content = document.querySelectorAll(".content")
@@ -59,8 +64,15 @@ const playaudio = () => {
             c.classList.remove("background")
         });
     });
+    const audio = document.getElementById("audio");
+    audio.addEventListener("click", () => {
+        if (audio.paused)
+            audio.play();
+        else
+            audio.pause();
+    });
 };
-// playaudio();
+// Do not run yet
 
 const scrollSection = document.querySelector(".scroll");
 const infiniteLoopScroll = () => {
@@ -81,7 +93,6 @@ scrollSection.addEventListener("scroll", () => {
     infiniteLoopScroll();
     openOnClick();
     hoverEffect();
-    playaudio();
 });
 
 
