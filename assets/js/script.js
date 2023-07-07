@@ -31,22 +31,30 @@ openOnClick();
 
 const hoverEffect = () => {
     const elements = document.querySelectorAll(".hover h1, .hover a, .hover p");
-    const container = document.querySelectorAll(".content");
-    elements.forEach(el => {
-        const parent = el.parentElement
-        el.addEventListener("mouseenter", () => {
-            parent.classList.add("underline");
+    const mediaQuery = window.matchMedia("(max-width: 600px)");
+    const handleMediaQuery = (e) => {
+        if (e.matches) {
+            return false
+        } else {
+            elements.forEach(el => {
+                const parent = el.parentElement
+                el.addEventListener("mouseenter", () => {
+                    parent.classList.add("underline");
 
-        });
-        el.addEventListener("mouseleave", () => {
-            parent.classList.remove("underline");
-        });
-        el.addEventListener("touchstart", () => {
-            if (parent.classList.contains("underline")) {
-                parent.classList.remove("underline");
-            }
-        })
-    });
+                });
+                el.addEventListener("mouseleave", () => {
+                    parent.classList.remove("underline");
+                });
+                el.addEventListener("touchstart", () => {
+                    if (parent.classList.contains("underline")) {
+                        parent.classList.remove("underline");
+                    };
+                });
+            });
+        };
+    };
+    mediaQuery.addListener(handleMediaQuery);
+    handleMediaQuery(mediaQuery);
 };
 hoverEffect();
 
