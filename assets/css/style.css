@@ -187,10 +187,31 @@ footer {
         --margin: 0 1rem;
     }
 
+    .content-wrapper {
+        pointer-events: none;
+    }
+
+    .content {
+        pointer-events: all;
+    }
+
     .layer .content {
-        background-color: #0dabab60;
+        position: relative;
+        background-color: transparent;
         mix-blend-mode: unset;
         height: var(--doc-height);
+    }
+
+    .layer .content::after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: var(--color-txt);
+        mix-blend-mode: lighten;
+        pointer-events: none;
     }
 
     .layer .content-list::after {
@@ -268,7 +289,6 @@ footer {
         mix-blend-mode: lighten;
         pointer-events: none;
     }
-
 
     .layer .content-list::after {
         background-color: var(--color-bg)
