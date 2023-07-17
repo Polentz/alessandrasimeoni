@@ -293,6 +293,17 @@ footer {
         stroke: var(--color-bg);
         stroke-width: 3px;
     }
+
+    .circle {
+        width: 6rem;
+        height: 6rem;
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    .circle svg {
+        width: 6rem;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -360,5 +371,16 @@ footer {
     .content-list.close svg {
         stroke: var(--color-bg);
         stroke-width: 3px;
+    }
+
+    .circle {
+        width: 6rem;
+        height: 6rem;
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    .circle svg {
+        width: 6rem;
     }
 }
