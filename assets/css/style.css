@@ -1,4 +1,24 @@
 /* Need prefix */
+@keyframes rotate {
+
+    /* 0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    } */
+    from {
+        stroke-dashoffset: 1;
+        transform: rotate(0deg);
+    }
+
+    to {
+        stroke-dashoffset: 0;
+        transform: rotate(360deg);
+    }
+}
+
 
 :root {
     --doc-height: 100%;
@@ -154,6 +174,7 @@ footer {
     font-weight: bolder;
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     gap: 1rem;
     padding: var(--margin);
     margin-bottom: 1rem;
@@ -165,20 +186,40 @@ footer {
     height: 8rem;
     border-radius: 50%;
     position: fixed;
-    top: -4rem;
-    right: -4rem;
-    /* transform: translate(-50%, -50%); */
+    bottom: 4rem;
+    right: 4rem;
+    display: flex;
     border: solid 1px var(--color-txt);
+    background-color: var(--color-txt);
     cursor: pointer;
-    transition: all 1.25s ease;
+    transition: background-color .25s ease;
+}
+
+.circle svg {
+    width: 8rem;
+    stroke: var(--color-txt);
+    stroke-width: 1.5px;
+    stroke-miterlimit: 10;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    fill: none;
+    opacity: 0;
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+.circle svg.show {
+    opacity: 1;
+    animation: rotate 6s ease-in-out alternate-reverse forwards infinite;
 }
 
 .circle:hover {
-    top: 0;
-    right: 0;
-    border-radius: 0%;
-    background-color: var(--color-txt);
-    mix-blend-mode: lighten;
+    background-color: transparent;
+}
+
+.circle.play {
+    border: none;
+    background-color: transparent;
 }
 
 @media screen and (max-width: 900px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {

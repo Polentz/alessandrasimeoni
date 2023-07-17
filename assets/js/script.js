@@ -58,29 +58,31 @@ const hoverEffect = () => {
 };
 hoverEffect();
 
-// Waiting for the audio element
 const playaudio = () => {
     const button = document.querySelector(".circle");
-    const content = document.querySelectorAll(".content")
-    button.addEventListener("mouseenter", () => {
-        content.forEach(c => {
-            c.classList.add("background")
-        });
-    });
-    button.addEventListener("mouseleave", () => {
-        content.forEach(c => {
-            c.classList.remove("background")
-        });
-    });
+    const svg = document.querySelector(".circle svg");
     const audio = document.getElementById("audio");
-    audio.addEventListener("click", () => {
-        if (audio.paused)
+    button.addEventListener("click", () => {
+        svg.classList.add("show");
+        button.classList.toggle("play");
+        if (audio.paused) {
             audio.play();
-        else
+            svg.classList.add("show");
+            button.classList.add("play");
+        } else {
             audio.pause();
+            svg.classList.remove("show");
+            button.classList.remove("play");
+        };
+    });
+    audio.addEventListener("timeupdate", () => {
+        if (audio.duration === audio.currentTime) {
+            svg.classList.remove("show");
+            button.classList.remove("play");
+        };
     });
 };
-// Do not run it yet
+playaudio();
 
 const scrollSection = document.querySelector(".scroll");
 const infiniteLoopScroll = () => {
