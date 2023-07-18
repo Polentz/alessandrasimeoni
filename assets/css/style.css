@@ -290,7 +290,14 @@ footer {
         font-size: .75rem;
         flex-direction: column;
         gap: .5rem;
+        align-items: flex-start;
         background-color: transparent;
+        color: var(--color-bg);
+    }
+
+    footer a,
+    footer a:visited,
+    footer a:focus {
         color: var(--color-bg);
     }
 
@@ -370,7 +377,14 @@ footer {
         font-size: .75rem;
         flex-direction: column;
         gap: .5rem;
+        align-items: flex-start;
         background-color: transparent;
+        color: var(--color-bg);
+    }
+
+    footer a,
+    footer a:visited,
+    footer a:focus {
         color: var(--color-bg);
     }
 
