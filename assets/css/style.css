@@ -155,7 +155,8 @@ section {
 
 .content-list h1,
 .content-list a,
-.content-list p {
+.content-list p,
+.content-list svg {
     color: var(--color-txt);
     display: block;
     padding: 1.5rem 0;
