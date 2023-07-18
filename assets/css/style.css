@@ -189,6 +189,8 @@ footer {
     bottom: 4rem;
     right: 4rem;
     display: flex;
+    align-items: center;
+    justify-content: center;
     border: solid 1px var(--color-txt);
     background-color: var(--color-txt);
     cursor: pointer;
@@ -196,7 +198,7 @@ footer {
 }
 
 .circle svg {
-    width: 8rem;
+    width: 7.75rem;
     stroke: var(--color-txt);
     stroke-width: 1.5px;
     stroke-miterlimit: 10;
@@ -218,7 +220,7 @@ footer {
 }
 
 .circle.play {
-    border: none;
+    /* border: none; */
     background-color: transparent;
 }
 
@@ -299,6 +301,7 @@ footer {
         height: 6rem;
         bottom: 1rem;
         right: 1rem;
+        background-color: transparent;
     }
 
     .circle svg {
@@ -378,6 +381,7 @@ footer {
         height: 6rem;
         bottom: 1rem;
         right: 1rem;
+        background-color: transparent;
     }
 
     .circle svg {
