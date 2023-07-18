@@ -299,13 +299,13 @@ footer {
     .circle {
         width: 6rem;
         height: 6rem;
-        bottom: 1rem;
+        bottom: 3rem;
         right: 1rem;
         background-color: transparent;
     }
 
     .circle svg {
-        width: 6rem;
+        width: 5.8rem;
     }
 }
 
@@ -379,12 +379,12 @@ footer {
     .circle {
         width: 6rem;
         height: 6rem;
-        bottom: 1rem;
+        bottom: 3rem;
         right: 1rem;
         background-color: transparent;
     }
 
     .circle svg {
-        width: 6rem;
+        width: 5.8rem;
     }
 }
