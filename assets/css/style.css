@@ -1,13 +1,16 @@
-/* Need prefix */
-@keyframes rotate {
-
-    /* 0% {
+@-webkit-keyframes rotate {
+    from {
+        stroke-dashoffset: 1;
         transform: rotate(0deg);
     }
 
-    100% {
+    to {
+        stroke-dashoffset: 0;
         transform: rotate(360deg);
-    } */
+    }
+}
+
+@keyframes rotate {
     from {
         stroke-dashoffset: 1;
         transform: rotate(0deg);
@@ -220,7 +223,6 @@ footer {
 }
 
 .circle.play {
-    /* border: none; */
     background-color: transparent;
 }
 
