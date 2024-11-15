@@ -10,11 +10,13 @@
 @-webkit-keyframes draw-rotate {
     from {
         stroke-dashoffset: 1;
+        -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
     }
 
     to {
         stroke-dashoffset: 0;
+        -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
     }
 }
@@ -22,11 +24,13 @@
 @keyframes draw-rotate {
     from {
         stroke-dashoffset: 1;
+        -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
     }
 
     to {
         stroke-dashoffset: 0;
+        -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
     }
 }
@@ -114,8 +118,13 @@ section {
     color: var(--color-txt);
     padding: 0 1rem;
     will-change: transform;
+    -webkit-transform: translateZ(0);
     transform: translateZ(0);
+    -webkit-transition: -webkit-transform 6s .25s ease-in-out;
+    transition: -webkit-transform 6s .25s ease-in-out;
+    -o-transition: transform 6s .25s ease-in-out;
     transition: transform 6s .25s ease-in-out;
+    transition: transform 6s .25s ease-in-out, -webkit-transform 6s .25s ease-in-out;
 }
 
 .content-list::before {
@@ -125,11 +134,15 @@ section {
     position: absolute;
     bottom: 0;
     left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
     transform: translateX(-50%);
     overflow: hidden;
     pointer-events: none;
     background-color: var(--color-txt);
     opacity: 0;
+    -webkit-transition: opacity 1.25s ease;
+    -o-transition: opacity 1.25s ease;
     transition: opacity 1.25s ease;
 }
 
@@ -141,6 +154,8 @@ section {
 .content-list.title h1,
 .content-list.contact span {
     display: inline-block;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
     cursor: pointer;
 }
@@ -164,6 +179,8 @@ section {
     position: absolute;
     bottom: 0;
     left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
     transform: translateX(-50%);
     overflow: hidden;
     pointer-events: none;
@@ -183,8 +200,14 @@ section {
 
 .layer .content {
     height: var(--doc-height);
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     gap: 1rem;
     background-color: #ff4747cc
@@ -196,6 +219,8 @@ section {
 }
 
 .layer .content-list {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
     font-size: var(--medium-font-size);
     text-align: center;
@@ -212,26 +237,37 @@ section {
 }
 
 .layer .content-list.close:last-of-type {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
     transform: rotate(180deg);
 }
 
 .layer .content-list.close svg {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     width: 7.75rem;
     stroke: var(--color-bg);
     stroke-width: 1px;
     stroke-linecap: round;
+    -webkit-transition: all 1.25s ease;
+    -o-transition: all 1.25s ease;
     transition: all 1.25s ease;
 }
 
 .layer .content-list.close svg:hover {
     stroke: var(--color-bg);
     stroke-width: 4px;
+    -webkit-transform: translateX(-4px);
+    -ms-transform: translateX(-4px);
     transform: translateX(-4px);
 }
 
 .layer .word {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
 }
 
@@ -242,13 +278,21 @@ section {
     position: fixed;
     bottom: 1rem;
     left: 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     border: solid 1px var(--color-bg);
     background-color: transparent;
     mix-blend-mode: lighten;
     cursor: pointer;
+    -webkit-transition: background-color .25s ease;
+    -o-transition: background-color .25s ease;
     transition: background-color .25s ease;
     z-index: 10;
 }
@@ -261,8 +305,11 @@ section {
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
     fill: transparent;
+    -webkit-transform: translateZ(0);
     transform: translateZ(0);
     will-change: transform;
+    -webkit-transition: fill 1.25s ease;
+    -o-transition: fill 1.25s ease;
     transition: fill 1.25s ease;
     animation: draw 6s ease-in-out alternate-reverse forwards infinite;
 }
@@ -335,7 +382,12 @@ footer a:focus {
     }
 
     .layer .content {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
     }
 
