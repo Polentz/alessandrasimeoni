@@ -344,6 +344,19 @@ footer a:focus {
     color: var(--color-bg);
 }
 
+footer a,
+footer a:visited,
+footer a:focus {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-color: var(--color-bg);
+}
+
+footer a:hover {
+    text-decoration: line-through;
+    text-underline-offset: 0;
+}
+
 @media screen and (max-width: 900px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
     :root {
         --font-size: calc(3vw + 2rem);
