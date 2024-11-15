@@ -3,31 +3,24 @@ const documentHeight = () => {
     doc.style.setProperty("--doc-height", `${window.innerHeight}px`);
 };
 
-window.addEventListener("load", () => {
-    documentHeight();
-});
-
-window.addEventListener("resize", () => {
-    documentHeight();
-});
-
 const openOnClick = () => {
-    const header = document.querySelectorAll(".title");
+    const header = document.querySelectorAll(".title, .contact");
     const about = document.getElementById("about");
     const main = document.querySelector(".main");
-    const close = document.querySelector(".close");
+    const closeBtns = document.querySelectorAll(".close");
     header.forEach(element => {
         element.addEventListener("click", () => {
             about.style.display = "block";
             main.style.display = "none";
         });
     });
-    close.addEventListener("click", () => {
-        about.style.display = "none";
-        main.style.display = "block";
+    closeBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            about.style.display = "none";
+            main.style.display = "block";
+        });
     });
 };
-openOnClick();
 
 const hoverEffect = () => {
     const elements = document.querySelectorAll(".hover h1, .hover a, .hover p");
@@ -56,33 +49,27 @@ const hoverEffect = () => {
     mediaQuery.addListener(handleMediaQuery);
     handleMediaQuery(mediaQuery);
 };
-hoverEffect();
 
 const playaudio = () => {
     const button = document.querySelector(".circle");
     const svg = document.querySelector(".circle svg");
     const audio = document.getElementById("audio");
     button.addEventListener("click", () => {
-        svg.classList.add("show");
-        button.classList.toggle("play");
+        svg.classList.add("play");
         if (audio.paused) {
             audio.play();
-            svg.classList.add("show");
-            button.classList.add("play");
+            svg.classList.add("play");
         } else {
             audio.pause();
-            svg.classList.remove("show");
-            button.classList.remove("play");
+            svg.classList.remove("play");
         };
     });
     audio.addEventListener("timeupdate", () => {
         if (audio.duration === audio.currentTime) {
-            svg.classList.remove("show");
-            button.classList.remove("play");
+            svg.classList.remove("play");
         };
     });
 };
-playaudio();
 
 const scrollSection = document.querySelector(".scroll");
 const infiniteLoopScroll = () => {
@@ -99,10 +86,50 @@ const infiniteLoopScroll = () => {
     };
 };
 
-scrollSection.addEventListener("scroll", () => {
-    infiniteLoopScroll();
+const split = (domElement) => {
+    let words = domElement.textContent.split(' ');
+    words = words.map(word => {
+        let letters = word.split('');
+        letters = letters.map(letter => `<span class="letter">${letter}</span>`);
+        return letters.join('');
+    });
+    domElement.innerHTML = words.join(' ');
+};
+
+const splitTitle = (element, content) => {
+    let div = document.createElement("div");
+    div.classList.add("word");
+    let text = document.createTextNode(content);
+    div.appendChild(text);
+    element.appendChild(div);
+    split(div);
+};
+
+document.querySelectorAll(".content-list h1, .content-list span, .content-list a").forEach(title => {
+    const thisContent = title.dataset.name;
+    splitTitle(title, thisContent);
+});
+
+document.addEventListener("mousemove", (event) => {
+    const x = event.pageX
+    const y = event.pageY
+    document.querySelectorAll(".letter").forEach(letter => {
+        const dx = (letter.offsetLeft + 50) - x;
+        const dy = (letter.offsetTop + 50) - y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const score = Math.exp(dist * -0.003);
+        letter.style.fontWeight = 100 + (100 * Math.floor(8 * score));
+    });
+});
+
+window.addEventListener("load", () => {
+    documentHeight();
     openOnClick();
-    hoverEffect();
+    playaudio();
+});
+
+window.addEventListener("resize", () => {
+    documentHeight();
 });
 
 
